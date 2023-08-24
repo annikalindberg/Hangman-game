@@ -1,0 +1,63 @@
+/* eslint-disable max-len */
+import React, { useEffect, useState } from 'react'
+/* import axios from 'axios' */
+import WordDisplay from './WordDisplay'
+import GuessInput from './GuessInput'
+import IncorrectGuesses from './IncorrectGuesses'
+import { weatherWords } from './WordsArray'
+
+const HangmanGame = () => {
+  // initialize state
+  const [secretWord, setSecretWord] = useState('')
+  const [correctGuesses, setCorrectGuesses] = useState([])
+  const [incorrectGuesses, setIncorrectGuesses] = useState([])
+  const [remainingGuesses, setRemainingGuesses] = useState(8)
+  /* const [gameOver, setGameOver] = useState(false) */
+
+  // fetch a random word from the API
+  /*  const fetchRandomWord = async () => {
+    try {
+      const response = await axios.get('https://api.api-ninjas.com/v1/randomword', {
+        headers: {
+          'X-Api-Key': process.env.REACT_APP_API_KEY
+        }
+      });
+*/
+
+  // function to handle user guess submission
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * weatherWords.length);
+    const randomWord = weatherWords[randomIndex].toLowerCase();
+    setSecretWord(randomWord);
+  }, []);
+
+  const handleGuess = (guess) => {
+    guess = guess.toLowerCase(); // convert to lowercase
+
+    if (secretWord.includes(guess)) {
+      if (!correctGuesses.includes(guess)) {
+        setCorrectGuesses([...correctGuesses, guess]);
+      }
+    } else if (!incorrectGuesses.includes(guess)) {
+      setIncorrectGuesses([...incorrectGuesses, guess]);
+      setRemainingGuesses(remainingGuesses - 1);
+    }
+  };
+
+  return (
+    <div className="hangman-game">
+      <h1>Whats behind the clouds?</h1>
+      <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
+      <GuessInput handleGuess={handleGuess} />
+      <IncorrectGuesses incorrectGuesses={incorrectGuesses} />
+      <p>Remaining Guesses: {remainingGuesses}</p>
+      <button
+        className="new-game-button"
+        type="button"
+        onClick={() => window.location.reload(false)}>New Game
+      </button>
+    </div>
+  )
+}
+export default HangmanGame
