@@ -8,6 +8,7 @@ const GuessInput = ({ handleGuess }) => {
     if (input) {
       handleGuess(input);
       setInput('');
+      console.log(input);
     }
   };
 
