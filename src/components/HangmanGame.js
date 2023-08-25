@@ -2,9 +2,12 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react'
 /* import axios from 'axios' */
+import styled from 'styled-components'
+import InitialClouds from './CloudsAnimation'
 import WordDisplay from './WordDisplay'
 import GuessInput from './GuessInput'
 import IncorrectGuesses from './IncorrectGuesses'
+import sun from '../assets/sun.png'
 import { weatherWords } from './WordsArray'
 
 const HangmanGame = () => {
@@ -30,6 +33,7 @@ const HangmanGame = () => {
     const randomIndex = Math.floor(Math.random() * weatherWords.length);
     const randomWord = weatherWords[randomIndex].toLowerCase();
     setSecretWord(randomWord);
+    console.log(randomWord);
   }, []);
 
   const handleGuess = (guess) => {
@@ -46,6 +50,8 @@ const HangmanGame = () => {
 
   return (
     <div className="hangman-game">
+      <InitialClouds />
+      <Sun src={sun} alt="sun" top={50} left={100} />
       <h1>Whats behind the clouds?</h1>
       <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
       <GuessInput handleGuess={handleGuess} />
@@ -60,4 +66,13 @@ const HangmanGame = () => {
     </div>
   )
 }
+
+const Sun = styled.img`
+  width: 100px;
+  position: absolute;
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+  z-index: -1; /* Set a negative z-index to place it behind clouds */
+`;
+
 export default HangmanGame

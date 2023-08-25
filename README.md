@@ -5,19 +5,21 @@
 ```
 src/
 |-- components/
-|   |-- Game/
-|   |   |-- HangmanGame.js
-|   |   |-- WordDisplay.js
-|   |   |-- GuessInput.js
-|   |   |-- IncorrectGuesses.js
-|-- containers/
-|   |-- App.js
+|  
+|   |-- HangmanGame.js
+|   |-- WordDisplay.js
+|   |-- GuessInput.js
+|   |-- IncorrectGuesses.js
+    |-- CloudsAnimations.js
+
+|-- App.js
 |-- actions/
 |   |-- gameActions.js
 |-- reducers/
 |   |-- gameReducer.js
 |-- styles/
 |   |-- GlobalStyles.js
+|   
 |-- utils/
 |   |-- api.js
 |-- index.js
@@ -35,9 +37,8 @@ src/
 
 4. **IncorrectGuesses.js**: Displays the incorrect letters that the player has guessed.
 
-### Containers:
+5. **App.js:** The entry point . Wraps the entire game and provides a place to set up global styles, routing, and other global functionality.
 
-1. App.js: The entry point . Wraps the entire game and provides a place to set up global styles, routing, and other global functionality.
 
 ### Actions and Reducers:
 

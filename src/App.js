@@ -1,6 +1,7 @@
 import React from 'react'
 import HangmanGame from './components/HangmanGame'
 import GlobalStyles from './styles/GlobalStyles'
+import './index.css'
 
 export const App = () => {
   return (
