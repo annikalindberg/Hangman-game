@@ -1,17 +1,10 @@
-// Action Types
-export const MAKE_GUESS = 'MAKE_GUESS';
-export const START_NEW_GAME = 'START_NEW_GAME';
+import { createAction } from '@reduxjs/toolkit';
 
-// Action Creators
-export const makeGuess = (guess) => {
-  return {
-    type: MAKE_GUESS,
-    payload: guess
-  };
-};
+// Action creators using createAction
+export const makeGuess = createAction('MAKE_GUESS', (guess) => {
+  return { payload: guess };
+});
 
-export const startNewGame = () => {
-  return {
-    type: START_NEW_GAME
-  };
-};
+export const startNewGame = createAction('START_NEW_GAME', (secretWord) => {
+  return { payload: secretWord };
+});

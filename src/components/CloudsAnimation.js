@@ -12,7 +12,6 @@ const CloudsWrapper = styled.div`
 
 const StyledClouds = styled.img`
     width: 10rem;
-
     position: absolute;
  top: ${(props) => props.top}px;
 left: ${(props) => props.left}px;;
