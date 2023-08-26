@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const WordDisplay = ({ secretWord, correctGuesses }) => {
   const displayWord = secretWord.split('').map((letter) => (
@@ -12,6 +13,11 @@ const WordDisplay = ({ secretWord, correctGuesses }) => {
       {displayWord}
     </div>
   );
+};
+
+WordDisplay.propTypes = {
+  secretWord: PropTypes.string.isRequired,
+  correctGuesses: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default WordDisplay;

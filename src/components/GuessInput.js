@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const GuessInput = ({ handleGuess }) => {
   const [input, setInput] = useState('');
@@ -25,4 +26,7 @@ const GuessInput = ({ handleGuess }) => {
   );
 };
 
+GuessInput.propTypes = {
+  handleGuess: PropTypes.func.isRequired,
+};
 export default GuessInput;

@@ -1,15 +1,10 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { combineReducers, configureStore } from 'redux-toolkit'
 import HangmanGame from './components/HangmanGame'
+import store from './store'
 import GlobalStyles from './styles/GlobalStyles'
 import './index.css'
 
-const reducer = combineReducers({
-  game: HangmanGame.reducer
-});
-
-const store = configureStore({ reducer });
 
 export const App = () => {
   return (
