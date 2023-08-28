@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 /* import { useDispatch, useSelector } from 'react-redux'; */
+import styled from 'styled-components';
 import InitialClouds from './CloudsAnimation';
 import WordDisplay from './WordDisplay';
 import GuessInput from './GuessInput';
@@ -53,12 +54,49 @@ const HangmanGame = () => {
     console.log('New game started!');
   }; */
 
+// STYLED COMPONENTS
+  
+  const StyledGameWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 100%;
+    height: 100%;
+    font-family: 'Mina', sans-serif;
+    text-align: center;
+    h1 {
+      font-size: 2rem;
+      color: #3498db;
+    }
+    .new-game-button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #e74c3c;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .new-game-button:hover {
+      background-color: #c0392b;
+    }
+    p {
+      font-size: 1rem;
+      color: #333;
+    }
+   `;
+    
+
   return (
-    <div className="hangman-game">
-      <InitialClouds />
-      
-      <h1>Whats behind the clouds?</h1>
-      <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
+    <>
+    <InitialClouds />
+      <StyledGameWrapper>
+<h1>Whats behind the clouds?</h1>
       <GuessInput handleGuess={handleGuess} />
       <IncorrectGuesses incorrectGuesses={incorrectGuesses} />
       <p>Remaining Guesses: {remainingGuesses}</p>
@@ -68,7 +106,8 @@ const HangmanGame = () => {
         type="button"
         onClick={() => window.location.reload(false)}>New Game
       </button>
-    </div>
+      <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
+    </StyledGameWrapper></>
   )
 }
 

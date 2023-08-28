@@ -1,17 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const StyledIncorrectGuesses = styled.div`
+  text-align: center;
+  margin-top: 1rem;
+  
+  p {
+    font-size: 1rem;
+    color: #e74c3c;
+  }
+`;
 
 const IncorrectGuesses = ({ incorrectGuesses }) => {
-  console.log(incorrectGuesses);
   return (
-    <div className="incorrect-guesses">
+    <StyledIncorrectGuesses>
       <p>Incorrect guesses: {incorrectGuesses.join(', ')}</p>
-    </div>
+    </StyledIncorrectGuesses>
   );
 };
+
 IncorrectGuesses.propTypes = {
   incorrectGuesses: PropTypes.arrayOf(PropTypes.string).isRequired,
-
 };
 
 export default IncorrectGuesses;

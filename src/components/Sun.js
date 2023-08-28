@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import sunImage from '../assets/sun.png';
 
 const StyledSun = styled.img`
-  width: 100px;
+  width: 10rem;
   position: absolute;
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
