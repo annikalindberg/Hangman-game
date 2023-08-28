@@ -6,7 +6,7 @@ import InitialClouds from './CloudsAnimation';
 import WordDisplay from './WordDisplay';
 import GuessInput from './GuessInput';
 import IncorrectGuesses from './IncorrectGuesses';
-import Sun from './Sun';
+
 import { weatherWords } from './WordsArray';
 
 const HangmanGame = () => {
@@ -56,7 +56,7 @@ const HangmanGame = () => {
   return (
     <div className="hangman-game">
       <InitialClouds />
-      <Sun top={50} left={100} />
+      
       <h1>Whats behind the clouds?</h1>
       <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
       <GuessInput handleGuess={handleGuess} />
