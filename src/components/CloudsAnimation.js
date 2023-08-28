@@ -29,7 +29,7 @@ const InitialClouds = () => {
   return (
     <div className="clouds-and-sun">
       <CloudsWrapper>
-        <StyledCloud src={singlecloud} alt="cloud" top={50} left={100} />
+        <StyledCloud src={singlecloud} alt="cloud" top={150} left={100} />
         <StyledCloud src={singlecloud} alt="cloud" top={150} left={200} />
         <StyledCloud src={singlecloud} alt="cloud" top={150} left={200} />
         <StyledCloud src={singlecloud} alt="cloud" top={100} left={300} />

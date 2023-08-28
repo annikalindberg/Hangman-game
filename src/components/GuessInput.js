@@ -9,7 +9,7 @@ const GuessInput = ({ handleGuess }) => {
     if (input) {
       handleGuess(input);
       setInput('');
-      console.log(input);
+      console.log(input + ' was guessed!');
     }
   };
 
