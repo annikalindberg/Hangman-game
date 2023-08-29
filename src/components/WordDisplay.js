@@ -12,18 +12,19 @@ const StyledWordDisplay = styled.div`
 
   .letter {
     display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
     margin: 0.25rem;
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 3rem;
     border: 2px solid #f39c12;
     border-radius: 50%;
     background-color: #f39c12;
     color: white;
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
+    
   }
 
   .letter.hidden {

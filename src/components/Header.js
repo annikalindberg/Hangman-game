@@ -6,7 +6,7 @@ import clouds from "../assets/clouds.png";
 
 const HeaderWrapper = styled.div`
     margin-top: 5rem;
-    margin-bottom: 10rem;
+    margin-bottom: 6rem;
     width: 100%;
     font-family: 'Mina', sans-serif;
     text-align: center;

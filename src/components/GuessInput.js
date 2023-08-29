@@ -6,7 +6,7 @@ const StyledGuessInput = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
+  margin-top: 4rem;
 
   input {
     width: 2.5rem;
