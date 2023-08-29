@@ -26,6 +26,13 @@ position: absolute;
  top: ${(props) => props.top}px;
 left: ${(props) => props.left}px;
 opacity: ${(props) => props.opacity}; 
+@media screen and (min-width: 768px) {
+  width: 8rem;
+  @media screen and (min-width: 1024px) {
+    width: 13rem;
+    
+  }
+}
 `;
 
 const StyledSun = styled.img`
@@ -52,6 +59,14 @@ const StyledCloud = styled.img`
     width: 8rem;
 top: ${(props) => props.top}px; 
 left: ${(props) => props.left}px;
+@media screen and (min-width: 768px) {
+  width: 10rem;
+  @media screen and (min-width: 1024px) {
+    width: 13rem;
+    
+  }
+}
+
     `;
 
 

@@ -12,18 +12,31 @@ const StyledWordDisplay = styled.div`
 
   .letter {
     display: inline-block;
-    width: 4rem;
-    height: 4rem;
-    line-height: 4rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
     margin: 0.25rem;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 1rem;
     border: 2px solid #f39c12;
     border-radius: 50%;
     background-color: #f39c12;
     color: white;
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
+    @media screen and (min-width: 768px) {
+      width: 3rem;
+      height: 3rem;
+      line-height: 3rem;
+       font-size: 2rem;
+    }
+      @media screen and (min-width: 1024px) {
+        width: 4rem;
+        height: 4rem;
+        line-height: 4rem;
+        font-size: 3rem;
+
+    }
     
   }
 

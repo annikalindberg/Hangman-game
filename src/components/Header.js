@@ -11,7 +11,11 @@ const HeaderWrapper = styled.div`
     font-family: 'Mina', sans-serif;
     text-align: center;
     position: relative; 
-      
+    @media screen and (max-width: 480px){
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        
+    }  
 
     h1 {
       font-size: 2rem;
@@ -20,9 +24,14 @@ const HeaderWrapper = styled.div`
       position: relative; 
       @media screen and (max-width: 390px) {
         font-size: 1rem;
+        @media screen and (max-width: 1024px) 
+        {
+            font-size: 4rem;
+            
+        }
       }
     }
-`;
+`
 
 const StyledClouds = styled.img`
     width: 10rem;
