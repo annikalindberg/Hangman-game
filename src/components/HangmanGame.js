@@ -9,6 +9,8 @@ import GuessInput from './GuessInput';
 import IncorrectGuesses from './IncorrectGuesses';
 import { Words } from './WordsArray';
 import Header from './Header';
+import Footer from 'components/Footer'
+
 
 const HangmanGame = () => {
   // initialize state
@@ -71,6 +73,7 @@ const HangmanGame = () => {
     flex-direction: column;
     align-items: center;
     justify-content: center; */
+
     margin-top: 5rem;
     margin-bottom: 5rem;
     width: 100%;
@@ -143,10 +146,9 @@ const HangmanGame = () => {
           type="button"
           onClick={handleNewGame}>New Game
       </button>
-        
-  
-        
-    </StyledGameWrapper></>
+      </StyledGameWrapper>
+      <Footer />
+    </>
   )
 }
 
