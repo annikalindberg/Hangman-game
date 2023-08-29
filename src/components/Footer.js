@@ -55,7 +55,7 @@ const StyledFooterLinks = styled.a`
 const Footer = () => {
     return (
         <StyledFooterWrapper>
-            <StyledFooterText>© Annika Lindberg</StyledFooterText>
+            <StyledFooterText>Made by © Annika Lindberg</StyledFooterText>
             <StyledFooterLinks
                 href="https://annikalindberg-portfolio.netlify.app/"
                 target="_blank"
