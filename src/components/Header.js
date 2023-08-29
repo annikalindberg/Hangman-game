@@ -8,7 +8,6 @@ const HeaderWrapper = styled.div`
     margin-top: 5rem;
     margin-bottom: 10rem;
     width: 100%;
-    
     font-family: 'Mina', sans-serif;
     text-align: center;
     position: relative; /* Add this */
@@ -26,9 +25,9 @@ const HeaderWrapper = styled.div`
 `;
 
 const StyledClouds = styled.img`
-    width: 16rem;
+    width: 10rem;
     position: absolute;
-    left: 20%; /* Adjust this */
+    right: 0%; /* Adjust this */
     transform: translateX(-50%); /* Adjust this */
     z-index: 1; /* Add this to make the clouds appear behind the h1 and rainbow */
 `;

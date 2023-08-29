@@ -118,10 +118,10 @@ const InitialClouds = ({ correctGuesses }) => {
 
         {/* Display sun and clouds based on correct guess progress */}
         {correctGuesses.length === 0 && <StyledClouds src={clouds} top={650} left={300} />} 
-        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={650} left={700} />} 
+        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={650} left={200} />} 
         {correctGuesses.length === 0 && <StyledCloud src={singlecloud} top={750} left={200} />} 
         {correctGuesses.length === 0 && <StyledClouds src={clouds} top={650} left={300} style={{ zIndex: -1 }} />} 
-        {correctGuesses.length > 0 && <StyledSun src={sunImage} top={550} left={500} />}
+        {correctGuesses.length > 0 && <StyledSun src={sunImage} top={550} left={100} />}
         {/* Increase anount of clouds as the user makes more correct guesses */}
 
 
