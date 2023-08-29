@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Mina', sans-serif;
+    background-color: #edccd161;
   }
 `;
 

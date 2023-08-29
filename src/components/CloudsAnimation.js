@@ -1,42 +1,158 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import clouds from '../assets/clouds.png';
-/* import singlecloud from '../assets/singlecloud.png'; */
-import Sun from './Sun';
+import rainbow from '../assets/rainbow.png';
+/* import sun_1 from '../assets/sun_1.png';
+import sun_2 from '../assets/sun_2.png';
+import sun_3 from '../assets/sun_3.png'; */
+import singlecloud from '../assets/singlecloud.png';
+import sunImage from '../assets/sun.png';
 
-/* const CloudsWrapper = styled.div`
-    position: absolute;
-    width: 100%;
-    max-width: 700px;
-    margin-top: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    ` */
+
+// STYLED COMPONENTS
+const CloudsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* height: 100vh; */
+    `
 
 const StyledClouds = styled.img`
-    width: 15rem;
+    width: 16rem;
 position: absolute;
  top: ${(props) => props.top}px;
-left: ${(props) => props.left}px;;
+left: ${(props) => props.left}px;
+opacity: ${(props) => props.opacity}; // this makes the opacity of the clouds to increase with each correct guess initially it is 0.1. TO SET THE OPACITY TO 1 WHEN THE GAME IS RESET, I NEED TO PASS THE GAME RESET PROP TO THIS COMPONENT AND THEN SET THE OPACITY TO 1 WHEN THE GAME RESET PROP IS TRUE.
 `;
 
-/* const StyledCloud = styled.img`
+const StyledSun = styled.img`
+  width: 10rem;
+  position: absolute;
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+  opacity: ${(props) => props.opacity};
+  z-index: -1;
+`;
+
+const StyledRainbow = styled.img`
+  width: 30rem;
+  height: 20rem;
+  filter: drop-shadow(0 0 0.75rem #fff);
+  position: absolute;
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+  `
+
+
+const StyledCloud = styled.img`
+  position: absolute;
     width: 8rem;
 top: ${(props) => props.top}px; 
 left: ${(props) => props.left}px;
-    `; */
+    `;
 
-const InitialClouds = () => {
+/* const StyledSun_1 = styled.img`
+    width: 10rem;
+    position: absolute;
+    top: ${(props) => props.top}px;
+    left: ${(props) => props.left}px;
+    `;
+const StyledSun_2 = styled.img`
+    width: 10rem;
+    position: absolute;
+    top: ${(props) => props.top}px;
+    left: ${(props) => props.left}px;
+    `;
+const StyledSun_3 = styled.img`
+    width: 10rem;
+    position: absolute;
+    top: ${(props) => props.top}px;
+    left: ${(props) => props.left}px;
+    `; */
+  
+// COMPONENT
+
+const calculateProgressLevel = (correctGuesses) => {
+  if (correctGuesses.length === 0) {
+    // Return the initial state or level for images
+    return 0;
+  } else if (correctGuesses.length < 2) {
+    return 1;
+  } else if (correctGuesses.length < 3) {
+    return 2;
+  } else if (correctGuesses.length < 4) {
+    return 3;
+  } else if (correctGuesses.length < 5) {
+    return 3;
+  } else {
+    return 3;
+  }
+}; 
+
+const InitialClouds = ({ correctGuesses }) => {
+  // Calculate progress level based on the number of correct guesses
+  const progressLevel = calculateProgressLevel(correctGuesses);
+
+  // Determine the maximum number of clouds to display
+  const maxNumClouds = 5; // Set this based on your design
+
   return (
     <div className="clouds-and-sun">
-     {/*  <CloudsWrapper> */}
-        <Sun top={700} left={300} />
+      <CloudsWrapper>
+        {/* Display clouds based on correct guess progress */}
+        {Array.from({ length: maxNumClouds }).map((_, index) => (
+          <StyledClouds
+            src={clouds}
+            top={650}
+            left={300 + index * 50}
+            key={index}
+            style={{
+              display: index < progressLevel ? "none" : "block",
+              zIndex: maxNumClouds - index,
+            }}
+          />
+        ))}
 
-        <StyledClouds src={clouds} alt="raincloud" top={700} left={400} />
-     {/*  </CloudsWrapper> */}
+        {/* Display sun and clouds based on correct guess progress */}
+        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={650} left={300} />} 
+        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={650} left={700} />} 
+        {correctGuesses.length === 0 && <StyledCloud src={singlecloud} top={750} left={200} />} 
+        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={650} left={300} style={{ zIndex: -1 }} />} 
+        {correctGuesses.length > 0 && <StyledSun src={sunImage} top={550} left={500} />}
+        {/* Increase anount of clouds as the user makes more correct guesses */}
+
+
+        {/* Display rainbow when the game is complete */}
+        {correctGuesses.length >= 4 && <StyledRainbow src={rainbow} top={650} left={300} />}
+    
+  
+        
+      </CloudsWrapper>
+
+{/*       <CloudsWrapper>
+        {Array.from({ length: numCloudsToDisplay }).map((_, index) => (
+          <StyledClouds src={clouds} top={650} left={300 + index * 50} key={index} />
+        ))}
+        {correctGuesses.length <= 1 && <StyledSun src={sunImage} top={650} left={300} />} 
+        {correctGuesses.length <= 2 && <StyledClouds src={clouds} top={650} left={300} />} 
+        {correctGuesses.length === 0 && <StyledCloud src={singlecloud} top={650} left={300} />}
+        {correctGuesses.length > 2 && <StyledSun_1 src={sun_1} top={650} left={300} />}
+        {correctGuesses.length > 3 && <StyledSun_2 src={sun_2} top={650} left={300} />}
+        {correctGuesses.length > 4 && <StyledSun_3 src={sun_3} top={650} left={300} />}
+        {correctGuesses.length > 5 && <StyledRainbow src={rainbow} top={650} left={300} />}
+      </CloudsWrapper> */}
     </div>
   );
+};
+
+
+
+InitialClouds.propTypes = {
+  correctGuesses: PropTypes.arrayOf(PropTypes.string).isRequired, // Add prop validation
+  gameReset: PropTypes.bool.isRequired,
 };
 
 export default InitialClouds;

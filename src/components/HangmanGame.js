@@ -7,8 +7,8 @@ import InitialClouds from './CloudsAnimation';
 import WordDisplay from './WordDisplay';
 import GuessInput from './GuessInput';
 import IncorrectGuesses from './IncorrectGuesses';
-
-import { weatherWords } from './WordsArray';
+import { Words } from './WordsArray';
+import Header from './Header';
 
 const HangmanGame = () => {
   // initialize state
@@ -17,6 +17,9 @@ const HangmanGame = () => {
   const [incorrectGuesses, setIncorrectGuesses] = useState([])
   const [remainingGuesses, setRemainingGuesses] = useState(8)
   const maxGuesses = 8;
+  const [gameReset, setGameReset] = useState(false);
+  const [isWordGuessed, setIsWordGuessed] = useState(false);
+
   /* const [gameOver, setGameOver] = useState(false) */
   // fetch a random word from the API
 /*  const fetchRandomWord = async () => {
@@ -29,8 +32,9 @@ const HangmanGame = () => {
 */
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * weatherWords.length);
-    const randomWord = weatherWords[randomIndex].toLowerCase();
+    setGameReset(false); // set gameReset to false when the component mounts
+    const randomIndex = Math.floor(Math.random() * Words.length);
+    const randomWord = Words[randomIndex].toLowerCase();
     setSecretWord(randomWord);
     console.log(randomWord);
   }, []);
@@ -41,26 +45,32 @@ const HangmanGame = () => {
     if (secretWord.includes(guess) && !correctGuesses.includes(guess)) {
       setCorrectGuesses([...correctGuesses, guess]);
       console.log(correctGuesses);
+      if (secretWord.length === correctGuesses.length + 1) {
+        setIsWordGuessed(true);
+      }
     } else if (!incorrectGuesses.includes(guess)) {
       setIncorrectGuesses([...incorrectGuesses, guess]);
       setRemainingGuesses(remainingGuesses - 1);
       console.log(remainingGuesses);
     }
   };
- /*  const handleNewGame = () => {
-    const randomIndex = Math.floor(Math.random() * weatherWords.length);
-    const randomWord = weatherWords[randomIndex].toLowerCase();
-    dispatch(startNewGame(randomWord));
-    console.log('New game started!');
-  }; */
+
+  const handleNewGame = () => {
+    setGameReset(!gameReset) // this is a hack to get the clouds to reset to their initial position when the game is reset. I need to pass the gameReset prop to the CloudsAnimation component and then set the opacity to 1 when the gameReset prop is true.
+    setCorrectGuesses([])
+    setIncorrectGuesses([])
+    setRemainingGuesses(8)
+    setGameReset(true);
+    console.log(gameReset);
+  }
 
 // STYLED COMPONENTS
   
   const StyledGameWrapper = styled.div`
-    display: flex;
+/*     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     margin-top: 5rem;
     margin-bottom: 5rem;
     width: 100%;
@@ -70,6 +80,9 @@ const HangmanGame = () => {
     h1 {
       font-size: 2rem;
       color: #3498db;
+      @media screen and (max-width: 390px) {
+        font-size: 1rem;
+      }
     }
     .new-game-button {
       margin-top: 1rem;
@@ -90,23 +103,48 @@ const HangmanGame = () => {
       color: #333;
     }
    `;
-    
+  const StyledWinnerMessage = styled.p`
+  p {
+    font-size: 1.2rem;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: bounce 1s infinite;
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    strong {
+      font-weight: bold;
+    }
+  }
+`;
 
   return (
     <>
-    <InitialClouds />
+      <Header />
+      <InitialClouds correctGuesses={correctGuesses} gameReset={gameReset} />
       <StyledGameWrapper>
-<h1>Whats behind the clouds?</h1>
       <GuessInput handleGuess={handleGuess} />
       <IncorrectGuesses incorrectGuesses={incorrectGuesses} />
       <p>Remaining Guesses: {remainingGuesses}</p>
       {remainingGuesses <= 0 && incorrectGuesses.length === maxGuesses && <p>Sorry pal, you've run out of guesses! The word was: {secretWord}</p>}
-      <button
-        className="new-game-button"
-        type="button"
-        onClick={() => window.location.reload(false)}>New Game
+        <button
+          className="new-game-button"
+          type="button"
+          onClick={handleNewGame}>New Game
       </button>
-      <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
+        <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
+        {isWordGuessed && <StyledWinnerMessage><p>Congratulations! You guessed the word: <strong>{secretWord}</strong></p></StyledWinnerMessage>}
+  
+        
     </StyledGameWrapper></>
   )
 }
