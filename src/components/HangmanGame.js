@@ -16,7 +16,7 @@ const HangmanGame = () => {
   const [correctGuesses, setCorrectGuesses] = useState([])
   const [incorrectGuesses, setIncorrectGuesses] = useState([])
   const [remainingGuesses, setRemainingGuesses] = useState(8)
-  const maxGuesses = 8;
+  const maxGuesses = 12;
   const [gameReset, setGameReset] = useState(false);
   const [isWordGuessed, setIsWordGuessed] = useState(false);
 
@@ -59,7 +59,7 @@ const HangmanGame = () => {
     setGameReset(!gameReset) // this is a hack to get the clouds to reset to their initial position when the game is reset. I need to pass the gameReset prop to the CloudsAnimation component and then set the opacity to 1 when the gameReset prop is true.
     setCorrectGuesses([])
     setIncorrectGuesses([])
-    setRemainingGuesses(8)
+    setRemainingGuesses(12)
     setGameReset(true);
     console.log(gameReset);
   }
@@ -132,6 +132,8 @@ const HangmanGame = () => {
       <Header />
       <InitialClouds correctGuesses={correctGuesses} gameReset={gameReset} />
       <StyledGameWrapper>
+        <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
+        {isWordGuessed && <StyledWinnerMessage><p>Congratulations! You guessed the word: <strong>{secretWord}</strong></p></StyledWinnerMessage>}
       <GuessInput handleGuess={handleGuess} />
       <IncorrectGuesses incorrectGuesses={incorrectGuesses} />
       <p>Remaining Guesses: {remainingGuesses}</p>
@@ -141,8 +143,7 @@ const HangmanGame = () => {
           type="button"
           onClick={handleNewGame}>New Game
       </button>
-        <WordDisplay secretWord={secretWord} correctGuesses={correctGuesses} />
-        {isWordGuessed && <StyledWinnerMessage><p>Congratulations! You guessed the word: <strong>{secretWord}</strong></p></StyledWinnerMessage>}
+        
   
         
     </StyledGameWrapper></>
