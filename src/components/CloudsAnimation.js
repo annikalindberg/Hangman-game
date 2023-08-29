@@ -21,7 +21,7 @@ const CloudsWrapper = styled.div`
     `
 
 const StyledClouds = styled.img`
-    width: 16rem;
+    width: 10rem;
 position: absolute;
  top: ${(props) => props.top}px;
 left: ${(props) => props.left}px;
@@ -55,6 +55,7 @@ left: ${(props) => props.left}px;
     `;
 
 
+
 const calculateProgressLevel = (correctGuesses) => {
   if (correctGuesses.length === 0) {
     // Return the initial state or level for images
@@ -73,7 +74,7 @@ const calculateProgressLevel = (correctGuesses) => {
 }; 
 
 const InitialClouds = ({ correctGuesses }) => {
-  
+  // Calculate progress level based on the number of correct guesses
   const progressLevel = calculateProgressLevel(correctGuesses);
 
   // Determine the maximum number of clouds to display
@@ -86,7 +87,7 @@ const InitialClouds = ({ correctGuesses }) => {
         {Array.from({ length: maxNumClouds }).map((_, index) => (
           <StyledClouds
             src={clouds}
-            top={500}
+            top={600}
             left={300 + index * 50}
             key={index}
             style={{

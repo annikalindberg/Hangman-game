@@ -9,7 +9,7 @@ const StyledGuessInput = styled.form`
   margin-top: 4rem;
 
   input {
-    width: 2.5rem;
+    width: 7rem;
     padding: 0.5rem;
     font-size: 1rem;
     text-align: center;

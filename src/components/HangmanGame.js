@@ -80,6 +80,7 @@ const HangmanGame = () => {
     height: 100%;
     font-family: 'Mina', sans-serif;
     text-align: center;
+    z-index: 2;
     h1 {
       font-size: 2rem;
       color: #3498db;
@@ -141,10 +142,11 @@ const HangmanGame = () => {
       <IncorrectGuesses incorrectGuesses={incorrectGuesses} />
       <p>Remaining Guesses: {remainingGuesses}</p>
       {remainingGuesses <= 0 && incorrectGuesses.length === maxGuesses && <p>Sorry pal, you've run out of guesses! The word was: {secretWord}</p>}
-        <button
+        <button style={{ zIndex: 3 }} 
           className="new-game-button"
           type="button"
           onClick={handleNewGame}>New Game
+          
       </button>
       </StyledGameWrapper>
       <Footer />
