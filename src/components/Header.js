@@ -7,13 +7,14 @@ import clouds from "../assets/clouds.png";
 const HeaderWrapper = styled.div`
     margin-top: 5rem;
     margin-bottom: 6rem;
-    width: 100%;
+    width: 100vw;
     font-family: 'Mina', sans-serif;
     text-align: center;
     position: relative; 
     @media screen and (max-width: 480px){
         margin-top: 2rem;
         margin-bottom: 2rem;
+    
         
     }  
 
@@ -22,16 +23,23 @@ const HeaderWrapper = styled.div`
       color: #3498db;
       z-index: 2; 
       position: relative; 
-      @media screen and (max-width: 390px) {
-        font-size: 1rem;
-        @media screen and (max-width: 1024px) 
-        {
-            font-size: 4rem;
+      width: 100vw;
+      margin-left: auto;
+      margin-right: auto;
+        @media screen and (min-width: 768px) {
+            font-size: 3rem;
             
         }
+     
+        }
+        // iPhone 5/SE
+        @media screen and (max-width: 480px) {
+        font-size: 1rem;
+        width: 100vw;
+    
       }
-    }
-`
+    
+`; 
 
 const StyledClouds = styled.img`
     width: 10rem;
