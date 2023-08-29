@@ -32,7 +32,7 @@ const gameReducer = (state = initialState, action) => {
       return state;
 
     case START_NEW_GAME:
-      // You can reset the game state here
+     
       return initialState;
 
     default:

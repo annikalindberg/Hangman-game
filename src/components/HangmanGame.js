@@ -56,7 +56,7 @@ const HangmanGame = () => {
   };
 
   const handleNewGame = () => {
-    setGameReset(!gameReset) // this is a hack to get the clouds to reset to their initial position when the game is reset. I need to pass the gameReset prop to the CloudsAnimation component and then set the opacity to 1 when the gameReset prop is true.
+    setGameReset(!gameReset) 
     setCorrectGuesses([])
     setIncorrectGuesses([])
     setRemainingGuesses(12)

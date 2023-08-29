@@ -10,14 +10,14 @@ const HeaderWrapper = styled.div`
     width: 100%;
     font-family: 'Mina', sans-serif;
     text-align: center;
-    position: relative; /* Add this */
+    position: relative; 
       
 
     h1 {
       font-size: 2rem;
       color: #3498db;
-      z-index: 2; /* Add this to make the h1 appear above the rainbow */
-      position: relative; /* Add this */
+      z-index: 2; 
+      position: relative; 
       @media screen and (max-width: 390px) {
         font-size: 1rem;
       }
@@ -27,9 +27,9 @@ const HeaderWrapper = styled.div`
 const StyledClouds = styled.img`
     width: 10rem;
     position: absolute;
-    right: 0%; /* Adjust this */
-    transform: translateX(-50%); /* Adjust this */
-    z-index: 1; /* Add this to make the clouds appear behind the h1 and rainbow */
+    right: 0%; 
+    transform: translateX(-50%); 
+    z-index: 1; 
 `;
 
 const AnimatedRainbow = styled.img`
@@ -37,8 +37,8 @@ const AnimatedRainbow = styled.img`
   height: 20rem;
   filter: drop-shadow(0 0 0.75rem #fff);
   position: absolute;
-  left: 50%; /* Center the rainbow horizontally */
-  transform: translate(-50%, -50%); /* Center the rainbow exactly */
+  left: 50%;
+  transform: translate(-50%, -50%); 
   animation: rainbowAnimation 3s ease-in-out infinite;
 
   @keyframes rainbowAnimation {
@@ -55,7 +55,7 @@ const AnimatedRainbow = styled.img`
 
 `;
 const RainbowOverlay = styled.div`
-    background-color: rgba(255, 255, 255, 0.5); /* Adjust the opacity as needed */
+    background-color: rgba(255, 255, 255, 0.5); 
     position: absolute;
     top: 0;
     left: 0;
