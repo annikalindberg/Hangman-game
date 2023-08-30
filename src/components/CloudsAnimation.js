@@ -21,18 +21,22 @@ const CloudsWrapper = styled.div`
     `
 
 const StyledClouds = styled.img`
-    width: 10rem;
+    width: 4rem;
 position: absolute;
  top: ${(props) => props.top}px;
 left: ${(props) => props.left}px;
 opacity: ${(props) => props.opacity}; 
 @media screen and (min-width: 768px) {
-  width: 8rem;
-  @media screen and (min-width: 1024px) {
-    width: 13rem;
-    
+    width: 7rem;
+    top: ${(props) => props.topTablet}px;
+    left: ${(props) => props.leftTablet}px;
   }
-}
+
+  @media screen and (min-width: 1024px) {
+    width: 8rem;
+    top: ${(props) => props.topLaptop}px;
+    left: ${(props) => props.leftLaptop}px;
+  }
 `;
 
 const StyledSun = styled.img`
@@ -56,13 +60,13 @@ const StyledRainbow = styled.img`
 
 const StyledCloud = styled.img`
   position: absolute;
-    width: 8rem;
+    width: 4rem;
 top: ${(props) => props.top}px; 
 left: ${(props) => props.left}px;
 @media screen and (min-width: 768px) {
-  width: 10rem;
+  width: 6rem;
   @media screen and (min-width: 1024px) {
-    width: 13rem;
+    width: 9rem;
     
   }
 }
@@ -93,7 +97,7 @@ const InitialClouds = ({ correctGuesses }) => {
   const progressLevel = calculateProgressLevel(correctGuesses);
 
   // Determine the maximum number of clouds to display
-  const maxNumClouds = 5; 
+  const maxNumClouds = 2; 
 
   return (
     <div className="clouds-and-sun">
@@ -101,22 +105,24 @@ const InitialClouds = ({ correctGuesses }) => {
         {/* Display clouds based on correct guess progress */}
         {Array.from({ length: maxNumClouds }).map((_, index) => (
           <StyledClouds
-            src={clouds}
-            top={600}
-            left={300 + index * 50}
+            src={singlecloud}
+            top={500}
+            left={50 + index * 50}
+            topTablet={400}
+            leftTablet={100 + index * 50}
+            topLaptop={500}
+            leftLaptop={150 + index * 50}
             key={index}
             style={{
-              display: index < progressLevel ? "none" : "block",
+              display: index < progressLevel ? 'none' : 'block',
               zIndex: maxNumClouds - index,
             }}
           />
         ))}
 
         {/* Display sun and clouds based on correct guess progress */}
-        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={500} left={300} />} 
-        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={550} left={200} />} 
-        {correctGuesses.length === 0 && <StyledCloud src={singlecloud} top={550} left={400} />} 
-        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={550} left={300} style={{ zIndex: -1 }} />} 
+        {correctGuesses.length === 0 && <StyledCloud src={singlecloud} top={450} left={400} style={{ zIndex: -1 }} />} 
+        {correctGuesses.length === 0 && <StyledClouds src={clouds} top={450} left={300} style={{ zIndex: -1 }} />} 
         {correctGuesses.length > 0 && <StyledSun src={sunImage} top={550} left={100} />}
         {/* Increase anount of clouds as the user makes more correct guesses */}
         {/* Display rainbow when the game is complete */}
