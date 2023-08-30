@@ -14,11 +14,19 @@ const StyledFooterWrapper = styled.footer`
         background-color: #EEECFB;
         color: #686161;
         flex-direction: row;
+        @media screen and (max-width: 480px){
+          flex-direction: column;
+          height: 15rem;
+        
+        }
 
 .footer-text {
   text-align: center;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   color: #272525;
+  @media screen and (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 }
 `
 const StyledFooterText = styled.p`

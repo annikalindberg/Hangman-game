@@ -14,8 +14,6 @@ const HeaderWrapper = styled.div`
     @media screen and (max-width: 480px){
         margin-top: 2rem;
         margin-bottom: 2rem;
-    
-        
     }  
 
     h1 {
@@ -25,21 +23,15 @@ const HeaderWrapper = styled.div`
       position: relative; 
       width: 100vw;
       margin-left: auto;
-      margin-right: auto;
-        @media screen and (min-width: 768px) {
-            font-size: 3rem;
-            
-        }
-     
-        }
-        // iPhone 5/SE
+      margin-right: auto;        
+      // iPhone 5/SE
         @media screen and (max-width: 480px) {
         font-size: 1rem;
         width: 100vw;
-    
-      }
-    
-`; 
+        @media screen and (min-width: 768px) {
+            font-size: 3rem;
+        }
+      } }`; 
 
 const StyledClouds = styled.img`
     width: 10rem;
@@ -47,6 +39,11 @@ const StyledClouds = styled.img`
     right: 0%; 
     transform: translateX(-50%); 
     z-index: 1; 
+    opacity: 0.6;
+    @media screen and (max-width: 480px){
+        display: none;
+        
+    }
 `;
 
 const AnimatedRainbow = styled.img`
@@ -76,7 +73,7 @@ const RainbowOverlay = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     z-index: 1;
 `;
