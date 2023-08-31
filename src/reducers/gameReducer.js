@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 import { MAKE_GUESS, START_NEW_GAME } from '../actions/gameActions';
-
+// this is also set in the gameActions.js file
 const initialState = {
   secretWord: '',
   correctGuesses: [],

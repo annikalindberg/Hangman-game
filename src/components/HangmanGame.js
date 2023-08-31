@@ -7,6 +7,7 @@ import InitialClouds from './CloudsAnimation';
 import WordDisplay from './WordDisplay';
 import GuessInput from './GuessInput';
 import IncorrectGuesses from './IncorrectGuesses';
+import axios from 'axios';
 import { Words } from './WordsArray';
 import Header from './Header';
 import Footer from 'components/Footer'
@@ -18,29 +19,36 @@ const HangmanGame = () => {
   const [correctGuesses, setCorrectGuesses] = useState([])
   const [incorrectGuesses, setIncorrectGuesses] = useState([])
   const [remainingGuesses, setRemainingGuesses] = useState(8)
-  const maxGuesses = 12;
+  const maxGuesses = 8;
   const [gameReset, setGameReset] = useState(false);
   const [isWordGuessed, setIsWordGuessed] = useState(false);
 
   /* const [gameOver, setGameOver] = useState(false) */
+
   // fetch a random word from the API
-/*  const fetchRandomWord = async () => {
-  try {
+ const fetchRandomWord = async () => {
+
     const response = await axios.get('https://api.api-ninjas.com/v1/randomword', {
       headers: {
-        'X-Api-Key': process.env.REACT_APP_API_KEY
+        'X-Api-Key': 'D8B0EE0Qh1Dg5Hq0gvJ57nW8nskqhvzIckawsswO'
       }
     });
-*/
+    console.log(response.data)
+  }
 
   useEffect(() => {
-    setGameReset(false); // set gameReset to false when the component mounts
+    setGameReset(true); // set gameReset to false when the component mounts
     const randomIndex = Math.floor(Math.random() * Words.length);
     const randomWord = Words[randomIndex].toLowerCase();
-    setSecretWord(randomWord);
+    setSecretWord(randomWord); 
+  fetchRandomWord();
     console.log(randomWord);
   }, []);
-
+// det här är sanningen om ditt ord skicka en Yode till reducern. genom dispatch. 
+// reducer tar emot och uppdaterar state.
+// reducer skickar tillbaka till komponenten.
+// komponenten tar emot och uppdaterar state.
+  
   const handleGuess = (guess) => {
     guess = guess.toLowerCase(); // convert to lowercase
 
@@ -57,13 +65,13 @@ const HangmanGame = () => {
     }
   };
 
+  // flytta över till reducer ? 
   const handleNewGame = () => {
-    setGameReset(!gameReset) 
+    setGameReset() 
     setCorrectGuesses([])
     setIncorrectGuesses([])
-    setRemainingGuesses(12)
-    setGameReset(true);
-    console.log(gameReset);
+    setRemainingGuesses(8);
+  
   }
 
 // STYLED COMPONENTS

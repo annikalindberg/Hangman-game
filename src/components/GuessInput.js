@@ -49,6 +49,7 @@ const GuessInput = ({ handleGuess }) => {
       handleGuess(input);
       setInput('');
       console.log(input + ' was guessed!');
+      setInput('');
     }
   };
 
