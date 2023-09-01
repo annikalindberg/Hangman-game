@@ -1,22 +1,24 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import HangmanGame from './components/HangmanGame'
-import './index.css'
-
-import gameReducer from 'reducers/gameReducer'
-
-
-const reducer = combineReducers({
-  game: gameReducer.reducer
-});
-const store = configureStore({ reducer });
+import React from 'react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { rootReducer } from './reducers/store'; // Import the rootReducer from your store.js
+import HangmanGameLogic from 'components/HangmanGameLogic';
+import './index.css';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 export const App = () => {
-  return (
-    <Provider store={store}>
-        <HangmanGame />
 
-    </Provider>
-  )
-}
+ const store = configureStore({
+   reducer: rootReducer,
+ }); 
+  
+  return (
+
+    <Provider store={store}>
+      <Header />
+      <HangmanGameLogic />
+      <Footer />
+  </Provider>
+);
+};
