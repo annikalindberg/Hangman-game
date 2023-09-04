@@ -11,7 +11,7 @@ const HangmanGameLogic = () => {
 
     const { secretWord, correctGuesses, incorrectGuesses, remainingGuesses, isWordGuessed } = useSelector(selectGame); // useSelector is here calling the selectGame selector and passing in the state from the store as an argument. The selectGame selector is returning the game state from the store. The game state is then destructured into the variables secretWord, correctGuesses, incorrectGuesses, remainingGuesses, and isWordGuessed. 
     console.log('game state', useSelector(selectGame));
-    console.log('secretWord', secretWord);
+    console.log('secretWord', secretWord); 
 
     
     const handleGuess = (guess) => {

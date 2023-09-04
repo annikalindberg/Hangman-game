@@ -47,6 +47,8 @@ const StyledWordDisplay = styled.div`
 `;
 
 const WordDisplay = ({ secretWord, correctGuesses }) => {
+  console.log('Secret Word Type:', typeof secretWord);
+
   const displayWord = secretWord.split('').map((letter) => (
     <span key={letter} className={`letter ${correctGuesses.includes(letter) ? '' : 'hidden'}`}>
       {correctGuesses.includes(letter) ? letter : '_'}
