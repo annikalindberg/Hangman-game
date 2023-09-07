@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import proptypes from "prop-types";
+import PropTypes from "prop-types";
 import WordDisplay from "./WordDisplay";
 import GuessInput from "./GuessInput";
 import IncorrectGuesses from "./IncorrectGuesses";
@@ -81,7 +81,7 @@ const HangmanGameUI = ({
     remainingGuesses,
     isWordGuessed,
     handleGuess,
-    handleNewGame,
+  handleNewGame,
 }) => {
     return (
         <StyledGameWrapper>
@@ -104,12 +104,12 @@ const HangmanGameUI = ({
 };
 
 HangmanGameUI.propTypes = {
-    secretWord: proptypes.string.isRequired,
-    correctGuesses: proptypes.arrayOf(proptypes.string).isRequired,
-    incorrectGuesses: proptypes.arrayOf(proptypes.string).isRequired,
-    remainingGuesses: proptypes.number.isRequired,
-    isWordGuessed: proptypes.bool.isRequired,
-    handleGuess: proptypes.func.isRequired,
-    handleNewGame: proptypes.func.isRequired,
+    secretWord: PropTypes.string.isRequired,
+    correctGuesses: PropTypes.arrayOf(PropTypes.string).isRequired,
+    incorrectGuesses: PropTypes.arrayOf(PropTypes.string).isRequired,
+    remainingGuesses: PropTypes.number.isRequired,
+    isWordGuessed: PropTypes.bool.isRequired,
+    handleGuess: PropTypes.func.isRequired,
+    handleNewGame: PropTypes.func.isRequired
 };
 export default HangmanGameUI;

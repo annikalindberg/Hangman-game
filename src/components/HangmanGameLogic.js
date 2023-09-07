@@ -19,12 +19,15 @@ const HangmanGameLogic = () => {
     }; // this is calling the makeGuess action creator and dispatching the action that it returns to the store to update the state
     console.log('secretWord', secretWord);
 
+    // ( fix?) check if loading is true before allowing the button to trigger the startNewGame action creator and dispatching the action that it returns to the store to update the state
     const handleNewGame = () => {
         dispatch(startNewGame());
+        console.log('startNewGame', startNewGame());
     }; // this is calling the startNewGame action creator and dispatching the action that it returns to the store to update the state
     useEffect(() => {
         dispatch(fetchSecretWord());
     }, [dispatch]); // this is calling the fetchSecretWord action creator and dispatching the action that it returns to the store to update the state
+  
     
     return (
         <HangmanGameUI
